@@ -43,9 +43,43 @@ INSERT INTO employee VALUES(8281, 'Juan', 'Lopez', 3812);
 INSERT INTO employee VALUES(8351, 'John', 'Schneider', 3901);
 INSERT INTO employee VALUES(8401, 'Patrick', 'McGill', 6371);
 
+CREATE TABLE employee_hobby (
+	id NUMERIC not null,
+	name char(50) not null, 
+	description char(500)
+);
 
+ALTER TABLE employee_hobby
+ADD CONSTRAINT pk_hobby
+PRIMARY KEY(id);
 
-/*CREATE TABLE employee_hobby (
-);*/
+CREATE TABLE hobby_by_employee (
+	id_employee NUMERIC not null,
+	id_hobby NUMERIC not null
+);
+ALTER TABLE hobby_by_employee
+ADD CONSTRAINT fk_employee
+FOREIGN KEY(id_employee)
+REFERENCES employee(id);
+
+ALTER TABLE hobby_by_employee
+ADD CONSTRAINT fk_hobby
+FOREIGN KEY(id_hobby)
+REFERENCES employee_hobby(id);
+
+INSERT INTO employee_hobby VALUES(3819, 'Football','The employee plays sometimes football soccer');
+INSERT INTO employee_hobby VALUES(7371, 'Reading', 'The employee regularly reads a book');
+INSERT INTO employee_hobby VALUES(1001, 'Watch Movies', 'The employee likes to watch movies of all kinds.');
+
+INSERT INTO hobby_by_employee VALUES(6271, 3819);
+INSERT INTO hobby_by_employee VALUES(6271, 1001);
+INSERT INTO hobby_by_employee VALUES(6271, 7371);
+INSERT INTO hobby_by_employee VALUES(8351, 7371);
+INSERT INTO hobby_by_employee VALUES(8281, 3819);
+INSERT INTO hobby_by_employee VALUES(8351, 3819);
+INSERT INTO hobby_by_employee VALUES(8281, 1001);
+INSERT INTO hobby_by_employee VALUES(8401, 7371);
+INSERT INTO hobby_by_employee VALUES(8351, 1001);
+
 
 -- ...
