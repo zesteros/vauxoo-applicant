@@ -81,30 +81,14 @@ INSERT INTO hobby_by_employee VALUES(8281, 1001);
 INSERT INTO hobby_by_employee VALUES(8401, 7371);
 INSERT INTO hobby_by_employee VALUES(8351, 1001);
 
+ALTER TABLE employee ADD COLUMN id_boss NUMERIC;
 
-INSERT INTO employee VALUES(2010, 'Joaquín', 'Arenas', 3901);
-INSERT INTO employee VALUES(2020, 'Humberto', 'Rios', 6371);
-INSERT INTO employee VALUES(1991, 'Josafat', 'Ramírez', 7381);
-INSERT INTO employee VALUES(2001, 'Pedro', 'Gamiño', 3812);
-
-CREATE TABLE boss (
-	id_department NUMERIC not null,
-	id_boss NUMERIC not null
-);
-
-ALTER TABLE boss 
-ADD CONSTRAINT fk_department
-FOREIGN KEY(id_department)
-REFERENCES employee_department(id);
-
-ALTER TABLE boss
-ADD CONSTRAINT fk_boss
-FOREIGN KEY(id_boss)
+ALTER TABLE employee 
+ADD FOREIGN KEY (id_boss)
 REFERENCES employee(id);
 
-INSERT INTO boss VALUES (3901, 2010);
-INSERT INTO boss VALUES (6371, 2020);
-INSERT INTO boss VALUES (7381, 1991);
-INSERT INTO boss VALUES (3812, 2001);
-
+UPDATE employee SET id_boss = 1001 WHERE id = 6271;
+UPDATE employee SET id_boss = 2001 WHERE id = 8281;
+UPDATE employee SET id_boss = 3001 WHERE id = 8351;
+UPDATE employee SET id_boss = 4001 WHERE id = 8401;
 -- ...
