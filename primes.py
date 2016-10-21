@@ -10,6 +10,7 @@ class PrimeClass(object):
 
     def is_prime(self, num_int):
         """The function to know if a number is prime or not"""
+        num = 0
         if num_int < 2:
             return False
         else:
