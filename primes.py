@@ -17,4 +17,4 @@ class PrimeClass(object):
             for num in range(2, num):
                 if num_int % num == 0:
                     return False
-                return True
+        return True
